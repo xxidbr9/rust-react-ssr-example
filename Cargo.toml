@@ -1,0 +1,47 @@
+[package]
+name = "rust-react-ssr"
+version = "0.1.0"
+edition = "2021"
+authors = ["Barnando Akbarto Hidayatullah <barnando13@gmail.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "ssr_react"
+path = "src/lib.rs"
+
+[dependencies]
+lazy_static = "1.4.0"
+v8 = "0.44.3"
+ssr_rs = "0.2.3"
+# rusty_v8 = "0.32.1"
+
+
+[dev-dependencies]
+
+# Actix depencendies
+actix-files = "0.6.0-beta.10"
+actix-web = "4.0.0-beta.12"
+futures = "0.3.13"
+
+# Warp dependencies
+tokio = { version = "1", features = ["full"] }
+warp = "0.3"
+
+# Tide dependencies
+tide = "0.16.0"
+async-std = { version = "1.6.0", features = ["attributes"] }
+serde = { version = "1.0", features = ["derive"] }
+
+
+# Benchmark dependencies
+criterion = "0.3.4"
+env_logger = "0.9.0"
+
+[[example]]
+name = "actix-v8"
+path = "examples/simple-ssr/actix-v8/actix_v8.rs"
+
+[[example]]
+name = "run"
+path = "examples/simple-ssr/run/run.rs"
