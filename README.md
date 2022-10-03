@@ -10,6 +10,23 @@ Learn V8 from [here](https://github.com/denoland/rusty_v8/blob/main/examples/hel
 - And install LLVM & Clang
 
 ## How To Run
+
+Before running the server, it required to build the frontend project
+
+```bash
+# Go to target directory
+cd examples/source
+
+# Install using yarn
+yarn 
+
+# Build all required files
+yarn build:all
+
+# Back to root project
+cd ../../
+```
+
 ```bash
 # For build react serve wit actix web server
 cargo build --example=actix-v8
