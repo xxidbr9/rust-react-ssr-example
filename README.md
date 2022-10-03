@@ -40,7 +40,6 @@ cargo run --example=actix-v8
 See the serve in : [http://localhost:8080](http://localhost:8080)
 
 ## TODO
-- [ ] Babel transformer => using same api in Next js
-- [ ] Example as Next js code base
-- [ ] Benchmark to Next js
-- [ ] Using JSC
+- [ ] Babel transformer => using same api in Next.js
+- [ ] Benchmarking and compare with Next.js
+- [ ] Using [JSC](https://github.com/WebKit/WebKit/tree/main/Source/JavaScriptCore)
