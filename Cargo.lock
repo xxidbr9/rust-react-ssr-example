@@ -1869,12 +1869,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
-name = "pkg-config"
-version = "0.3.25"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1df8c4ec4b0627e53bdf214615ad287367e482558cf84b109250b37464dc03ae"
-
-[[package]]
 name = "plotters"
 version = "0.3.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2116,7 +2110,6 @@ dependencies = [
  "env_logger",
  "futures",
  "lazy_static",
- "rusty_jsc",
  "serde",
  "tide",
  "tokio",
@@ -2149,37 +2142,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5eebeaeb360c87bfb72e84abdb3447159c0eaececf1bef2aecd65a8be949d1c9"
 dependencies = [
  "base64 0.13.0",
-]
-
-[[package]]
-name = "rusty_jsc"
-version = "0.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da7821add4689a4b46066b49128a328201c0a95b1cc4202d19f24c728f087f27"
-dependencies = [
- "anyhow",
- "rusty_jsc_macros",
- "rusty_jsc_sys",
-]
-
-[[package]]
-name = "rusty_jsc_macros"
-version = "0.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3ce4edd3e6b84755289672ba68ad2d1cc90f58a394c2661d8185b180892d3986"
-dependencies = [
- "pkg-config",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "rusty_jsc_sys"
-version = "0.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bf1d6f0c2ad32f00461c882a3162ef5625df8a9e5785a0101f018166e7c059b8"
-dependencies = [
- "pkg-config",
 ]
 
 [[package]]

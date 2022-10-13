@@ -1,7 +1,7 @@
-use std::fs::read_to_string;
+// use std::fs::read_to_string;
 
-use rusty_jsc::JSContext;
-use ssr_react::polyfill::POLYFILL;
+// // use rusty_jsc::JSContext;
+// use ssr_react::polyfill::POLYFILL;
 
 // fn main() {
 //     let mut context = JSContext::default();
@@ -15,18 +15,18 @@ use ssr_react::polyfill::POLYFILL;
 // }
 
 fn main() {
-    let mut context = JSContext::default();
+    // let mut context = JSContext::default();
 
-    let source = read_to_string("./examples/simple-ssr/source/dist/ssr/index.js").unwrap();
-    let eval = &format!(
-        "{};{};{};",
-        POLYFILL.as_str(),
-        source,
-        // "Object.values(SSR).map(e => e());"
-        "SSR"
-    );
-    let value = context.evaluate_script(eval.as_str(), 1);
-    if let Some(value) = value {
-        println!("{}", value.to_string(&context));
-    }
+    // let source = read_to_string("./examples/simple-ssr/source/dist/ssr/index.js").unwrap();
+    // let eval = &format!(
+    //     "{};{};{};",
+    //     POLYFILL.as_str(),
+    //     source,
+    //     // "Object.values(SSR).map(e => e());"
+    //     "SSR"
+    // );
+    // let value = context.evaluate_script(eval.as_str(), 1);
+    // if let Some(value) = value {
+    //     println!("{}", value.to_string(&context));
+    // }
 }
