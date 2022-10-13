@@ -10,10 +10,10 @@ function App() {
     <div className="App">
       <div>
         <a href="https://www.rust-lang.org" target="_blank">
-          <img src={rustLogo} className="logo rust" alt="React logo" />
+          <img src={rustLogo} className="logo rust" alt="React logo" width={144} height={96}/>
         </a>
         <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+          <img src={reactLogo} className="logo react" alt="React logo" width={144} height={96}/>
         </a>
       </div>
       <h1>Rust + React = ❤️‍🔥</h1>
