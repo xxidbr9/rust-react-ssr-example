@@ -28,13 +28,21 @@ cd ../../
 ```
 
 ```bash
-# For build react serve wit actix web server
-cargo build --example=actix-v8
+# serve with actix web server
+# Using V8
+cargo build --example=actix-v8 --release
+
+# Using JSC
+cargo build --example=actix-jsc --release
 ```
 
 ```bash
 # Serve the example
-cargo run --example=actix-v8
+# V8
+cargo run --example=actix-v8 --release
+
+# JSC
+cargo build --example=actix-jsc --release
 ```
 
 See the serve in : [http://localhost:8088](http://localhost:8088)
@@ -43,3 +51,4 @@ See the serve in : [http://localhost:8088](http://localhost:8088)
 - [ ] Babel transformer => using same api in Next.js
 - [ ] Benchmarking and compare with Next.js
 - [ ] Using [JSC](https://github.com/WebKit/WebKit/tree/main/Source/JavaScriptCore)
+- [ ] Fix JSC ```[Object Module]```
