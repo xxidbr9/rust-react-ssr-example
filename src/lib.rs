@@ -1,6 +1,13 @@
 #[macro_use]
 extern crate lazy_static;
-mod ssr_v8;
-mod polyfill;
+// V8
+pub mod ssr_jsc;
+pub mod ssr_v8;
+// POLYFILL
+pub mod polyfill;
 
-pub use ssr_v8::Ssr;
+// SSR V8
+pub use ssr_v8::SsrV8;
+
+// SSR JSC
+pub use ssr_jsc::SsrJsc;

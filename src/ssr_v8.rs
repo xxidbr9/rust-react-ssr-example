@@ -3,16 +3,16 @@ use std::collections::HashMap;
 use crate::polyfill;
 
 #[derive(Clone, Debug, PartialEq)]
-pub struct Ssr<'a> {
+pub struct SsrV8<'a> {
     source: String,
     entry_point: &'a str,
 }
 
-impl<'a> Ssr<'a> {
+impl<'a> SsrV8<'a> {
     pub fn new(source: String, entry_point: &'a str) -> Self {
         Self::init_platform();
 
-        Ssr {
+        SsrV8 {
             source,
             entry_point,
         }
@@ -54,7 +54,6 @@ impl<'a> Ssr<'a> {
         //Stack-allocated class which sets the execution context for all operations executed within a local scope.
         let scope = &mut v8::ContextScope::new(handle_scope, context);
 
-        
         // this is use for react 18, need to remove from typescript lib.dom.d.ts, refer to this issue https://github.com/microsoft/TypeScript/issues/31535
         let prefix = polyfill::POLYFILL.as_str();
 
@@ -135,14 +134,14 @@ mod tests {
 
     #[test]
     fn check_struct_instance() {
-        let js = Ssr::new(
+        let js = SsrV8::new(
             r##"var SSR = {x: () => "<html></html>"};"##.to_string(),
             "SSR",
         );
 
         assert_eq!(
             js,
-            Ssr {
+            SsrV8 {
                 source: r##"var SSR = {x: () => "<html></html>"};"##.to_string(),
                 entry_point: "SSR"
             }

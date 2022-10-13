@@ -1,8 +1,13 @@
 use actix_files as fs;
-use actix_web::{get, http::StatusCode, middleware::Logger, App, HttpResponse, HttpServer};
+use actix_web::{
+    get,
+    http::{StatusCode},
+    middleware::Logger,
+    App, HttpResponse, HttpServer,
+};
 use std::fs::read_to_string;
 
-use ssr_react::SsrV8;
+use ssr_react::SsrJsc;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -24,7 +29,7 @@ async fn main() -> std::io::Result<()> {
             )
             .service(index)
     })
-    .bind(("0.0.0.0", 8082))?
+    .bind(("0.0.0.0", 8081))?
     .run()
     .await
 }
@@ -33,10 +38,12 @@ async fn main() -> std::io::Result<()> {
 async fn index() -> HttpResponse {
     let source = read_to_string("./examples/simple-ssr/source/dist/ssr/index.js").unwrap();
 
-    let js = SsrV8::new(source, "SSR");
+    let js = SsrJsc::new(source, "Object.values(SSR).map(e => e())");
     let html = js.render_to_string(None);
 
-    HttpResponse::build(StatusCode::OK)
+    let response = HttpResponse::build(StatusCode::OK)
         .content_type("text/html; charset=utf-8")
-        .body(html)
+        .body(html);
+
+    response
 }
