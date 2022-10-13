@@ -45,7 +45,8 @@ cargo run --example=actix-v8 --release
 cargo build --example=actix-jsc --release
 ```
 
-See the serve in : [http://localhost:8088](http://localhost:8088)
+See the serve in JSC : [http://localhost:8081](http://localhost:8081)
+See the serve in V8 : [http://localhost:8082](http://localhost:8082)
 
 ## TODO
 - [ ] Babel transformer => using same api in Next.js
