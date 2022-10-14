@@ -12,20 +12,20 @@ WORKDIR /usr/src
 # Create blank project
 
 # We want dependencies cached, so copy those first.
-COPY Cargo.toml Cargo.lock /usr/src/ssr_actix_v8/
+COPY Cargo.toml Cargo.lock /usr/src/run_v8/
 
 # Now copy in the rest of the sources
-COPY . /usr/src/ssr_actix_v8
+COPY . /usr/src/run_v8
 
 # Set the working directory
-WORKDIR /usr/src/ssr_actix_v8
+WORKDIR /usr/src/run_v8
 
 ## Install target platform (Cross-Compilation) --> Needed for Alpine
 # RUN rustup target add x86_64-unknown-linux-musl
-# RUN apt-get install pkg-config
+RUN apt-get install pkg-config
 
 # This is the actual application build.
-RUN cargo build --example=actix-v8 --release
+RUN cargo build --example=run-v8 --release
 RUN echo $(ls -1)
 
 ################
@@ -38,19 +38,20 @@ RUN pwd
 RUN echo $(ls -1)
 
 # Copy application binary from builder image
-COPY --from=builder /usr/src/ssr_actix_v8/target/release/examples/actix-v8 /app
+COPY --from=builder /usr/src/run_v8/target/release/examples/run-v8 /app
 
 # Create a example web to run the application
 RUN mkdir -p examples/simple-ssr/source/dist
 
-COPY --from=builder /usr/src/ssr_actix_v8/examples/simple-ssr/source/dist /app/examples/simple-ssr/source/dist
+COPY --from=builder /usr/src/run_v8/examples/simple-ssr/source/dist /app/examples/simple-ssr/source/dist
 
 RUN echo $(ls ./examples/simple-ssr/source/dist)
 RUN echo $(ls -1)
-RUN pwd
 
 # exposing out base on server PORT
 EXPOSE 8082
 
+RUN "./run-v8"
+
 # Run the application
-CMD ["/app/actix-v8"]
+CMD ["./run-v8"]
