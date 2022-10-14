@@ -53,4 +53,4 @@ RUN pwd
 EXPOSE 8082
 
 # Run the application
-CMD ["/app/actix-v8"]
+ENTRYPOINT ["/app/actix-v8"]
